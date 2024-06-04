@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>imhex</id>
-    <version>1.33.2</version>
+    <version>1.34.0</version>
     <title>ImHex</title>
     <packageSourceUrl>https://github.com/Jarcho/chocolatey-packages/tree/master/imhex/</packageSourceUrl>
     <iconUrl>https://rawcdn.githack.com/Jarcho/chocolatey-packages/cf56f8193966a0334d89ffccacdac928f4d1a60a/imhex/icon.png</iconUrl>
