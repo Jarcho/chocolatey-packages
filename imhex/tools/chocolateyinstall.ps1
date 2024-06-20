@@ -16,3 +16,4 @@ Install-ChocolateyZipPackage @installArgs
 
 $installDir = $toolsDir
 New-Item "$(Join-Path $installDir 'ImHex.exe.gui')" -type file -Force | Out-Null
+Remove-Item "$(Join-Path $installDir 'PORTABLE')" -Force | Out-Null
