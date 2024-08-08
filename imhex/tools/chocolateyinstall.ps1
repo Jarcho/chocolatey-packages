@@ -1,18 +1,20 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
-$url32 = 'https://github.com/WerWolv/ImHex/releases/download/v1.35.4/imhex-1.35.4-Windows-Portable-x86_64.zip'
-$checksum32 = '6c9698ba5c54e592c06a2a17841ae5b9933ce22e34365d070f2c6249422b56a7'
+$url64 = 'https://github.com/WerWolv/ImHex/releases/download/v1.35.4/imhex-1.35.4-Windows-x86_64.msi'
+$checksum64 = '11992c03b74f11c0f7be7770cad2cf96ba50b544588a1f2ca0222a600a807ab5'
 
 $installArgs = @{
-    packageName   = 'imhex'
-    unzipLocation = $toolsDir
-    fileType      = 'zip'
-    url           = $url32
-    checksum      = $checksum32
-    checksumType  = 'sha256'
+    packageName    = 'imhex'
+    fileType       = 'msi'
+    softwareName   = 'ImHex'
+    url64          = $url64
+    checksum64     = $checksum64
+    checksumType   = 'sha256'
+    silentArgs     = '/quiet /norestart ALLUSERS=1'
+    validExitCodes = @(0, 3010, 1641)
 }
 
-Install-ChocolateyZipPackage @installArgs
+Install-ChocolateyPackage @installArgs
 
 $installDir = $toolsDir
 New-Item "$(Join-Path $installDir 'ImHex.exe.gui')" -type file -Force | Out-Null

@@ -8,24 +8,24 @@ function global:au_GetLatest {
     $version = $latest_release.tag_name.TrimStart("v")
 
     foreach ($asset in $latest_release.assets) {
-        $windows_asset = $asset | ? name -Match 'Windows-Portable(-x86_64)?\.zip'
+        $windows_asset = $asset | ? name -Match 'Windows(-x86_64)?\.zip'
         if ($windows_asset) {
             $download_url = $windows_asset.browser_download_url
             break
         }
     }
-    
+
     return @{
         Version = $version
-        URL32   = $download_url
+        URL64   = $download_url
     }
 }
 
 function global:au_SearchReplace {
     @{
         "tools\chocolateyInstall.ps1" = @{
-            "(?i)(^\`$url32\s*=\s*)('.*')"      = "`$1'$($Latest.URL32)'"
-            "(?i)(^\`$checksum32\s*=\s*)('.*')" = "`$1'$($Latest.Checksum32)'"
+            "(?i)(^\`$url64\s*=\s*)('.*')"      = "`$1'$($Latest.URL64)'"
+            "(?i)(^\`$checksum64\s*=\s*)('.*')" = "`$1'$($Latest.Checksum64)'"
         }
     }
 }
