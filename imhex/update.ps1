@@ -8,7 +8,7 @@ function global:au_GetLatest {
     $version = $latest_release.tag_name.TrimStart("v")
 
     foreach ($asset in $latest_release.assets) {
-        $windows_asset = $asset | ? name -Match 'Windows(-x86_64)?\.zip'
+        $windows_asset = $asset | ? name -Match 'Windows(-x86_64)?\.msi'
         if ($windows_asset) {
             $download_url = $windows_asset.browser_download_url
             break
