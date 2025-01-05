@@ -1,15 +1,15 @@
 ﻿$ErrorActionPreference = 'Stop';
 
-$url32 = 'https://proton.me/download/bridge/Bridge-Installer.exe'
-$checksum32 = '55b052a88d8b23c0241568da6de00283f282a46f3b820469b76f5188413cbe25'
+$url64      = 'https://github.com/ProtonMail/proton-bridge/releases/download/v3.15.1/Bridge-Installer.exe'
+$checksum64 = '5a0fa312ba843798cdc42ccc5142f6c171f4371af768d5ed20be809e5bff5a3b'
 
 $packageArgs = @{
     packageName    = 'protonmailbridge'
     fileType       = 'exe'
     silentArgs     = '/quiet'
     validExitCodes = @(0)
-    url            = $url32
-    checksum       = $checksum32
+    url64          = $url64
+    checksum64     = $checksum64
     checksumType   = 'sha256'
 }
 
