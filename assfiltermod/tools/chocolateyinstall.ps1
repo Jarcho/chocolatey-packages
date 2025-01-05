@@ -4,7 +4,7 @@ $installDir32   = "$(Join-Path $toolsDir x86)"
 $url32      = 'https://github.com/Blitzker/assfiltermod/releases/download/0.4/assfiltermod_v0.4_x32.zip'
 $checksum32 = '138003e042fdf7050ed192c5087de42cabb816371fa27db40ea599131e1a96f0'
 $url64      = 'https://github.com/Blitzker/assfiltermod/releases/download/0.4/assfiltermod_v0.4_x64.zip'
-$checksum64 = '77074ED9C28D12ED07569CBE293A6765AB7F2696034EDBA97875CFC92D5EB5AC'
+$checksum64 = '77074ed9c28d12ed07569cbe293a6765ab7f2696034edba97875cfc92d5eb5ac'
 
 $packageArgs = @{
   packageName    = 'assfiltermod'
