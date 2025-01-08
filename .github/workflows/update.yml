@@ -35,10 +35,5 @@ jobs:
           path: ./updater.exe
           key: ${{ hashfile(./updater/version) }}
 
-      - name: Choco install updater
-        uses: crazy-max/ghaction-chocolatey@v2
-        with:
-          args: install au
-
       - name: Update
         run: ./updater.exe
