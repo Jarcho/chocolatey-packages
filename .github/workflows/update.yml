@@ -36,4 +36,4 @@ jobs:
           key: ${{ hashfile(./updater/version) }}
 
       - name: Update
-        run: ./updater.exe
+        run: ./updater.exe "'${{ secrets.choco_api_key }}'"
