@@ -1,0 +1,31 @@
+name: Update cache key
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'updater/**'
+      - '!updater/version'
+      - '!updater/readme.md'
+
+jobs:
+  update:
+    name: Update cache key
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      # v4.2.2
+      - name: Checkout sources
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Update
+        shell: pwsh
+        run: |
+          write-output $([convert]::ToInt64($(get-content './updater/version'), 10) + 1) > './updater/version'
+          git config --global user.name 'Github Actions'
+          git config --global user.email 'jarcho@users.noreply.github.com'
+          git commit -am 'increment updater version'
+          git push

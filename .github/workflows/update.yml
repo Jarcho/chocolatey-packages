@@ -10,8 +10,30 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      # v4.2.2
       - name: Checkout sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      # v4.2.0
+      - name: Restore updater
+        id: restore-updater
+        uses: actions/cache/restore@1bd1e32a3bdc45362d1e726936510720a7c30a57
+        with:
+          path: ./updater.exe
+          key: ${{ hashfile(./updater/version) }}
+
+      - name: Build updater
+        if: steps.restore-updater.cache-hit != true
+        run: |
+          cargo build --release --manifest-path '.\updater\Cargo.toml'
+          cp '.\updater\target\release\updater.exe' '.'
+
+      # v4.2.0
+      - name: Cache updater
+        uses: actions/cache/save@1bd1e32a3bdc45362d1e726936510720a7c30a57
+        with:
+          path: ./updater.exe
+          key: ${{ hashfile(./updater/version) }}
 
       - name: Choco install updater
         uses: crazy-max/ghaction-chocolatey@v2
@@ -19,15 +41,4 @@ jobs:
           args: install au
 
       - name: Update
-        run: |
-          refreshenv
-          git config --global user.email "chocolatey@realdimensions.net"
-          git config --global user.name "Chocolatey"
-          git config --global core.safecrlf false
-          .\update_all.ps1
-        shell: powershell
-        env:
-          api_key: ${{ secrets.choco_api_key }}
-          github_user_repo: ${{ github.repository }}
-          github_api_key: ${{ secrets.GITHUB_TOKEN }}
-          au_Push: "true"
+        run: ./updater.exe
