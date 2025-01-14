@@ -1,5 +1,6 @@
 use crate::nuspec::Version;
 use crate::{Error, Result};
+use std::os::windows::process::CommandExt;
 use std::process::Command;
 
 fn run_command(name: &'static str, command: &mut Command) -> Result<()> {
@@ -14,13 +15,13 @@ fn run_command(name: &'static str, command: &mut Command) -> Result<()> {
 pub fn git_commit_package(package: &str, version: Version) -> Result<()> {
   run_command(
     "git commit",
-    Command::new("git").args([
-      "commit",
-      "--author=Github Actions <jarcho@users.noreply.github.com>",
-      format!("--message=Updated `{package}` to `{version}`").as_str(),
-      format!("{package}/{package}.nuspec").as_str(),
-      format!("{package}/tools/chocolateyinstall.ps1").as_str(),
-    ]),
+    Command::new("git").raw_arg(format!(
+      "commit \
+        --author=\"Github Actions <jarcho@users.noreply.github.com>\" \
+        --message=\"Updated `{package}` to `{version}`\" \
+        \"{package}/{package}.nuspec\" \
+        \"{package}/tools/chocolateyinstall.ps1\""
+    )),
   )
 }
 
