@@ -37,4 +37,7 @@ jobs:
           key: ${{ hashFiles('./updater/version') }}
 
       - name: Update
-        run: ./updater.exe "'${{ secrets.choco_api_key }}'"
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "jarcho@users.noreply.github.com"
+          ./updater.exe "'${{ secrets.choco_api_key }}'"
