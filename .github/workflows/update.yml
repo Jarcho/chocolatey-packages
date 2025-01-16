@@ -23,14 +23,14 @@ jobs:
           key: ${{ hashFiles('./updater/version') }}
 
       - name: Build updater
-        if: steps.restore-updater.cache-hit != 'true'
+        if: steps.restore-updater.outputs.cache-hit != 'true'
         run: |
           cargo build --release --manifest-path '.\updater\Cargo.toml'
           cp '.\updater\target\release\updater.exe' '.'
 
       # v4.2.0
       - name: Cache updater
-        if: steps.restore-updater.cache-hit != 'true'
+        if: steps.restore-updater.outputs.cache-hit != 'true'
         uses: actions/cache/save@1bd1e32a3bdc45362d1e726936510720a7c30a57
         with:
           path: ./updater.exe
