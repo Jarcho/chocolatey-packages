@@ -55,6 +55,7 @@ pub fn choco_push_package(package: &str, version: Version, api_key: &str) -> Res
       format!(".\\{package}\\{package}.{version}.nupkg").as_str(),
       "--source",
       "'https://push.chocolatey.org/'",
+      "--api-key",
       api_key,
     ]),
   )
