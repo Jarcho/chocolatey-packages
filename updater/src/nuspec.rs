@@ -16,12 +16,11 @@ pub struct Version {
 }
 impl Display for Version {
   fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-    write!(f, "{}.{}", self.major, self.minor)?;
-    match (self.patch, self.build) {
-      (0, 0) => Ok(()),
-      (_, 0) => write!(f, ".{}", self.patch),
-      (_, _) => write!(f, "{}.{}", self.patch, self.build),
+    write!(f, "{}.{}.{}", self.major, self.minor, self.patch)?;
+    if self.build != 0 {
+      write!(f, ".{}", self.build)?;
     }
+    Ok(())
   }
 }
 impl FromStr for Version {
