@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>nextdns-cli</id>
-    <version>1.44.4</version>
+    <version>1.44.5</version>
     <title>NextDNS CLI</title>
     <packageSourceUrl>https://github.com/Jarcho/chocolatey-packages/tree/master/nextdns-cli/</packageSourceUrl>
     <iconUrl>https://rawcdn.githack.com/Jarcho/chocolatey-packages/cd9e791591743e1551d9d1a5f8d773bd6bd6fd20/nextdns/icon.png</iconUrl>
