@@ -211,8 +211,8 @@ static PACKAGES: &[Package] = &[
     version_url: "https://api.github.com/repos/Blitzker/assfiltermod/releases",
     download_headers: &[],
     get_sig_key: None,
-    fetch_update: |_, prev_version, respose| {
-      let release: github::Release = respose.into_json().map_err(Error::UpdateIo)?;
+    fetch_update: |_, prev_version, response| {
+      let release: github::Release = response.into_json().map_err(Error::UpdateIo)?;
       let version = release.tag.parse().map_err(|_| Error::UpdateParseVersion)?;
       if version > prev_version {
         let [url32, url64] = github::extract_assets(
@@ -238,8 +238,8 @@ static PACKAGES: &[Package] = &[
     version_url: "https://api.github.com/repos/WerWolv/ImHex/releases",
     download_headers: &[],
     get_sig_key: None,
-    fetch_update: |_, prev_version, respose| {
-      let release: github::Release = respose.into_json().map_err(Error::UpdateIo)?;
+    fetch_update: |_, prev_version, response| {
+      let release: github::Release = response.into_json().map_err(Error::UpdateIo)?;
       let version = release.tag.parse().map_err(|_| Error::UpdateParseVersion)?;
       if version > prev_version {
         let [url64] = github::extract_assets(release.assets, &["x64"], |x: &str| {
@@ -256,13 +256,35 @@ static PACKAGES: &[Package] = &[
     },
   },
   Package {
+    name: "jujutsu.portable",
+    version_url: "https://github.com/jj-vcs/jj/releases",
+    download_headers: &[],
+    get_sig_key: None,
+    fetch_update: |_, prev_version, response| {
+      let release: github::Release = response.into_json().map_err(Error::UpdateIo)?;
+      let version = release.tag.parse().map_err(|_| Error::UpdateParseVersion)?;
+      if version > prev_version {
+        let [url64] = github::extract_assets(release.assets, &["x64"], |x: &str| {
+          x.ends_with("-x86_64-pc-windows-msvc.zip ")
+        })?;
+        Ok(Some(PackageUpdate {
+          version,
+          x32: None,
+          x64: Some(PlatformUpdate::new(url64)),
+        }))
+      } else {
+        Ok(None)
+      }
+    },
+  },
+  Package {
     name: "madvr",
     version_url: "https://www.videohelp.com/software/madVR",
     download_headers: &[("Referrer", "https://www.videohelp.com/software/madVR")],
     get_sig_key: None,
-    fetch_update: |_, prev_version, respose| {
+    fetch_update: |_, prev_version, response| {
       static SEARCH_TEXT: &str = r#"href="https://www.videohelp.com/download/madVR"#;
-      let text = respose.into_string().map_err(Error::UpdateIo)?;
+      let text = response.into_string().map_err(Error::UpdateIo)?;
       let pos = text.find(SEARCH_TEXT).ok_or(Error::UpdateNoRelease)?;
       let version_start = pos + SEARCH_TEXT.len();
       let version = Version {
@@ -306,8 +328,8 @@ static PACKAGES: &[Package] = &[
     version_url: "https://api.github.com/repos/nextdns/nextdns/releases",
     download_headers: &[],
     get_sig_key: None,
-    fetch_update: |agent, prev_version, respose| {
-      let release: github::Release = respose.into_json().map_err(Error::UpdateIo)?;
+    fetch_update: |agent, prev_version, response| {
+      let release: github::Release = response.into_json().map_err(Error::UpdateIo)?;
       let version = release.tag.parse().map_err(|_| Error::UpdateParseVersion)?;
       if version > prev_version {
         let [url32, url64, checksums] = github::extract_assets(
@@ -360,8 +382,8 @@ static PACKAGES: &[Package] = &[
           .0
       })
     }),
-    fetch_update: |agent, prev_version, respose| {
-      let release: github::Release = respose.into_json().map_err(Error::UpdateIo)?;
+    fetch_update: |agent, prev_version, response| {
+      let release: github::Release = response.into_json().map_err(Error::UpdateIo)?;
       let version = release.tag.parse().map_err(|_| Error::UpdateParseVersion)?;
       if version > prev_version {
         let [url64, sig64] = github::extract_assets(
@@ -390,8 +412,8 @@ static PACKAGES: &[Package] = &[
     version_url: "https://api.github.com/repos/StreamWhatYouHear/SWYH/releases",
     download_headers: &[],
     get_sig_key: None,
-    fetch_update: |_, prev_version, respose| {
-      let release: github::Release = respose.into_json().map_err(Error::UpdateIo)?;
+    fetch_update: |_, prev_version, response| {
+      let release: github::Release = response.into_json().map_err(Error::UpdateIo)?;
       let version = release.tag.parse().map_err(|_| Error::UpdateParseVersion)?;
       if version > prev_version {
         let [url32] = github::extract_assets(release.assets, &["x32"], |x: &str| {
@@ -412,8 +434,8 @@ static PACKAGES: &[Package] = &[
     version_url: "https://api.github.com/repos/Cyberbeing/xy-VSFilter/releases",
     download_headers: &[],
     get_sig_key: None,
-    fetch_update: |_, prev_version, respose| {
-      let release: github::Release = respose.into_json().map_err(Error::UpdateIo)?;
+    fetch_update: |_, prev_version, response| {
+      let release: github::Release = response.into_json().map_err(Error::UpdateIo)?;
       let version = release.tag.parse().map_err(|_| Error::UpdateParseVersion)?;
       if version > prev_version {
         let [url32, url64] = github::extract_assets(
