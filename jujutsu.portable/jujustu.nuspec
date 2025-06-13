@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- == PACKAGE SPECIFIC SECTION == -->
+    <id>jujutsu.portable</id>
+    <version>0.30.0</version>
+    <title>Jujutsu</title>
+    <packageSourceUrl>https://github.com/Jarcho/chocolatey-packages/tree/master/jujutsu.portable/</packageSourceUrl>
+    <iconUrl>https://rawcdn.githack.com/Jarcho/chocolatey-packages/48634f1b7c8a2e70d90d918b99a2746e15a0d206/jujutsu.portable/icon.png</iconUrl>
+    <owners>Jason Newcomb</owners>
+
+    <!-- == SOFTWARE SPECIFIC SECTION == -->
+    <authors>Jujutsu Authors</authors>
+    <projectUrl>https://jj-vcs.github.io/jj/latest/</projectUrl>
+    <docsUrl>https://jj-vcs.github.io/jj/latest/</docsUrl>
+    <copyright>2022-2025 Jujutsu Authors</copyright>
+    <licenseUrl>https://github.com/jj-vcs/jj/blob/main/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/jj-vcs/jj</projectSourceUrl>
+    <bugTrackerUrl>https://github.com/jj-vcs/jj/issues</bugTrackerUrl>
+    <tags>jj vcs dvcs version-control source-control revision-control cli cross-platform</tags>
+    <summary>Jujutsu is a version control system that separates the user interface from the storage system.</summary>
+    <description><![CDATA[Jujutsu is a powerful [version control system](https://en.wikipedia.org/wiki/Version_control)
+for software projects. You use it to get a copy of your code, track changes
+to the code, and finally publish those changes for others to see and use.
+It is designed from the ground up to be easy to use—whether you're new or
+experienced, working on brand new projects alone, or large scale software
+projects with large histories and teams.
+
+Jujutsu is unlike most other systems, because internally it abstracts the user
+interface and version control algorithms from the *storage systems* used to
+serve your content. This allows it to serve as a VCS with many possible physical
+backends, that may have their own data or networking models—like [Mercurial](https://www.mercurial-scm.org/) or
+[Breezy](https://www.breezy-vcs.org/), or hybrid systems like Google's cloud-based design, [Piper/CitC](https://youtu.be/W71BTkUbdqE?t=645).
+]]></description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
