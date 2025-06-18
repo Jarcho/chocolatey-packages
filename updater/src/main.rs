@@ -257,7 +257,7 @@ static PACKAGES: &[Package] = &[
   },
   Package {
     name: "jujutsu.portable",
-    version_url: "https://github.com/jj-vcs/jj/releases",
+    version_url: "https://api.github.com/repos/jj-vcs/jj/releases",
     download_headers: &[],
     get_sig_key: None,
     fetch_update: |_, prev_version, response| {
