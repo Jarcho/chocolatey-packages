@@ -265,7 +265,7 @@ static PACKAGES: &[Package] = &[
       let version = release.tag.parse().map_err(|_| Error::UpdateParseVersion)?;
       if version > prev_version {
         let [url64] = github::extract_assets(release.assets, &["x64"], |x: &str| {
-          x.ends_with("-x86_64-pc-windows-msvc.zip ")
+          x.ends_with("-x86_64-pc-windows-msvc.zip")
         })?;
         Ok(Some(PackageUpdate {
           version,
