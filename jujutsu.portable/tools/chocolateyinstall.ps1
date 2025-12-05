@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop';
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$url64      = 'https://github.com/jj-vcs/jj/releases/download/v0.35.0/jj-v0.35.0-x86_64-pc-windows-msvc.zip'
-$checksum64 = '71c9546feb60e8350e5b2be32ffaf599c56c49a074961890d1afa90c15c4abf0'
+$url64      = 'https://github.com/jj-vcs/jj/releases/download/v0.36.0/jj-v0.36.0-x86_64-pc-windows-msvc.zip'
+$checksum64 = 'f173e51b54617b91de2a61f6e83a43220a91ec5025fa5d002a07668780074f61'
 
 $packageArgs = @{
   packageName    = 'jujutsu.portable'

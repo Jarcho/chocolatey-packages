@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>jujutsu.portable</id>
-    <version>0.35.0</version>
+    <version>0.36.0</version>
     <title>Jujutsu</title>
     <packageSourceUrl>https://github.com/Jarcho/chocolatey-packages/tree/master/jujutsu.portable/</packageSourceUrl>
     <iconUrl>https://rawcdn.githack.com/Jarcho/chocolatey-packages/48634f1b7c8a2e70d90d918b99a2746e15a0d206/jujutsu.portable/icon.png</iconUrl>
