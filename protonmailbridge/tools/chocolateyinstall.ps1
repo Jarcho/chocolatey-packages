@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop';
 
-$url64      = 'https://github.com/ProtonMail/proton-bridge/releases/download/v3.21.2/Bridge-Installer.exe'
-$checksum64 = 'fc9a115648f216ba7d9e86aeed9923fdbb77037d5a24d630532efb247f485ef2'
+$url64      = 'https://github.com/ProtonMail/proton-bridge/releases/download/v3.22.0/Bridge-Installer.exe'
+$checksum64 = 'db79f2a33a67157c4f25fa544def65bac5af0477c5c8bc865f2f3110c3eed596'
 
 $packageArgs = @{
     packageName    = 'protonmailbridge'
